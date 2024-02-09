@@ -20,6 +20,9 @@ Route::get('/', function () {
 });
 Route::get('/login', [AuthController::class,'loginForm'])->name('login')->middleware('guest');
 Route::get('/register', [AuthController::class,'index'])->name('register')->middleware('guest');
+Route::post('/register', [AuthController::class,'register'])->name('newregister')->middleware('guest');
+Route::post('/login', [AuthController::class,'login'])->name('newlogin')->middleware('guest');
 
+Route::post('/logout', [AuthController::class,'logout'])->name('logout')->middleware('auth');
 
 Route::get('/dashboard', function () {return view('dashboard');})->middleware('auth');
